@@ -1,8 +1,9 @@
 import React from "react";
 
-function Nav({ activeTab, setTab }) {
+function Nav({ activeTab, setTab, cart }) {
 	const getClasses = (tabName) =>
 		`App-nav-item ${activeTab === tabName ? "selected" : ""}`;
+	const total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
 
 	return (
 		<nav className="App-nav">
@@ -14,6 +15,10 @@ function Nav({ activeTab, setTab }) {
 					<button onClick={() => setTab("cart")}>Cart</button>
 				</li>
 			</ul>
+
+			<span>
+				🛒{cart.length} items (${total})
+			</span>
 		</nav>
 	);
 }

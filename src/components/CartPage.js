@@ -5,6 +5,10 @@ import "./styles/CartPage.css";
 import Item from "./Item";
 
 function CartPage({ items, onRemoveOne, onAddOne }) {
+	const total = items
+		.reduce((sum, item) => sum + item.price * item.count, 0)
+		.toFixed(2);
+
 	return (
 		<ul className="CartPage-items">
 			{items.map((item) => (
@@ -28,6 +32,12 @@ function CartPage({ items, onRemoveOne, onAddOne }) {
 					</Item>
 				</li>
 			))}
+
+			{items.length !== 0 ? (
+				<p className="CartPage-total">Total: ${total}</p>
+			) : (
+				<h3>Your cart is empty</h3>
+			)}
 		</ul>
 	);
 }

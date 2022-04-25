@@ -42,7 +42,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<Nav activeTab={activeTab} setTab={setActiveTab} />
+			<Nav activeTab={activeTab} setTab={setActiveTab} cart={cart} />
 			<main className="App-content">
 				<Content
 					tab={activeTab}
